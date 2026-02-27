@@ -1,0 +1,99 @@
+File: XFRFUN.cbl
+Timestamp: 2026-02-25 22:22:34
+Exit code: 1
+
+================================================================================
+ERROR ANALYSIS:
+================================================================================
+⚠ KeyError detected - missing key in dictionary
+   Possible causes: COBOL structure not matching expected format
+
+================================================================================
+STDOUT:
+================================================================================
+STAGE: Parsing stage intialised.
+ERROR: Parsing stage Failed.
+
+
+================================================================================
+STDERR:
+================================================================================
+line 565:0 no viable alternative at input 'MOVE COMM-TACCNO TO DESIRED-ACC-NO\n MOVE COMM-TSCODE TO DESIRED-SORT-CODE\n PERFORM UPDATE-ACCOUNT-DB2-TO\n IF COMM-SUCCESS = 'Y' \n MOVE COMM-FACCNO TO DESIRED-ACC-NO\n MOVE COMM-FSCODE TO DESIRED-SORT-CODE\n PERFORM UPDATE-ACCOUNT-DB2-FROM\n IF COMM-SUCCESS = 'N' \n IF COMM-FAIL-CODE NOT = '1' \n INITIALIZE ABNDINFO-REC\n MOVE EIBRESP TO ABND-RESPCODE\n MOVE EIBRESP2 TO ABND-RESP2CODE\n MOVE EIBTASKN TO ABND-TASKNO-KEY\n MOVE EIBTRNID TO ABND-TRANID\n PERFORM POPULATE-TIME-DATE\n MOVE WS-ORIG-DATE TO ABND-DATE\n STRING WS-TIME-NOW-GRP-HH DELIMITED BY SIZE\n ':' DELIMITED BY SIZE\n WS-TIME-NOW-GRP-MM DELIMITED BY SIZE\n ':' DELIMITED BY SIZE\n WS-TIME-NOW-GRP-MM DELIMITED BY SIZE\n INTO ABND-TIME\n END-STRING\n MOVE WS-U-TIME TO ABND-UTIME-KEY\n MOVE 'FROM' TO ABND-CODE\n MOVE ZEROS TO ABND-SQLCODE\n STRING 'UAD010(4) - Error updating FROM account '\n DELIMITED BY SIZE\n ' EIBRESP=' DELIMITED BY SIZE\n ABND-RESPCODE DELIMITED BY SIZE\n ' RESP2=' DELIMITED BY SIZE\n ABND-RESP2CODE DELIMITED BY SIZE\n INTO ABND-FREEFORM\n END-STRING\n DISPLAY 'Error updating FROM account' \n ELSE\n IF WS-CICS-RESP IS NOT EQUAL TO DFHRESP(NORMAL)\n INITIALIZE ABNDINFO-REC\n MOVE EIBRESP TO ABND-RESPCODE\n MOVE EIBRESP2 TO ABND-RESP2CODE\n MOVE EIBTASKN TO ABND-TASKNO-KEY\n MOVE EIBTRNID TO ABND-TRANID\n PERFORM POPULATE-TIME-DATE\n MOVE WS-ORIG-DATE TO ABND-DATE\n STRING WS-TIME-NOW-GRP-HH DELIMITED BY SIZE\n ':' DELIMITED BY SIZE\n WS-TIME-NOW-GRP-MM DELIMITED BY SIZE\n ':' DELIMITED BY SIZE\n WS-TIME-NOW-GRP-MM DELIMITED BY SIZE\n INTO ABND-TIME\n END-STRING\n MOVE WS-U-TIME TO ABND-UTIME-KEY\n MOVE 'HROL' TO ABND-CODE\n MOVE ZEROS TO ABND-SQLCODE\n STRING 'UAD010(5) - Error on SYNCPOINT ' \n DELIMITED BY SIZE\n ' ROLLBACK ' DELIMITED BY SIZE\n ' after UPDATING the FROM account' \n DELIMITED BY SIZE\n ' EIBRESP=' DELIMITED BY SIZE\n ABND-RESPCODE DELIMITED BY SIZE\n ' RESP2=' DELIMITED BY SIZE\n ABND-RESP2CODE DELIMITED BY SIZE\n INTO ABND-FREEFORM\n END-STRING\n DISPLAY 'XFRFUN error syncpoint ' \n ' rollback after ' \n 'updating FROM account ' \n ',RESP=' WS-CICS-RESP\n ',RESP2=' WS-CICS-RESP2\n END-IF\n GO TO UAD999\n END-IF\n END-IF\n ELSE\n IF COMM-FAIL-CODE NOT = '2' \n INITIALIZE ABNDINFO-REC\n MOVE EIBRESP TO ABND-RESPCODE\n MOVE EIBRESP2 TO ABND-RESP2CODE\n MOVE EIBTASKN TO ABND-TASKNO-KEY\n MOVE EIBTRNID TO ABND-TRANID\n PERFORM POPULATE-TIME-DATE\n MOVE WS-ORIG-DATE TO ABND-DATE\n STRING WS-TIME-NOW-GRP-HH DELIMITED BY SIZE\n ':' DELIMITED BY SIZE\n WS-TIME-NOW-GRP-MM DELIMITED BY SIZE\n ':' DELIMITED BY SIZE\n WS-TIME-NOW-GRP-MM DELIMITED BY SIZE\n INTO ABND-TIME\n END-STRING\n MOVE WS-U-TIME TO ABND-UTIME-KEY\n MOVE 'TO  ' TO ABND-CODE\n MOVE ZEROS TO ABND-SQLCODE\n STRING 'UAD010(6) - Error updating TO account ' \n DELIMITED BY SIZE\n ' EIBRESP=' DELIMITED BY SIZE\n ABND-RESPCODE DELIMITED BY SIZE\n ' RESP2=' DELIMITED BY SIZE\n ABND-RESP2CODE DELIMITED BY SIZE\n INTO ABND-FREEFORM\n END-STRING\n DISPLAY 'Error updating TO account' \n ELSE\n'
+line 565:0 no viable alternative at input 'IF COMM-FAIL-CODE NOT = '2' \n INITIALIZE ABNDINFO-REC\n MOVE EIBRESP TO ABND-RESPCODE\n MOVE EIBRESP2 TO ABND-RESP2CODE\n MOVE EIBTASKN TO ABND-TASKNO-KEY\n MOVE EIBTRNID TO ABND-TRANID\n PERFORM POPULATE-TIME-DATE\n MOVE WS-ORIG-DATE TO ABND-DATE\n STRING WS-TIME-NOW-GRP-HH DELIMITED BY SIZE\n ':' DELIMITED BY SIZE\n WS-TIME-NOW-GRP-MM DELIMITED BY SIZE\n ':' DELIMITED BY SIZE\n WS-TIME-NOW-GRP-MM DELIMITED BY SIZE\n INTO ABND-TIME\n END-STRING\n MOVE WS-U-TIME TO ABND-UTIME-KEY\n MOVE 'TO  ' TO ABND-CODE\n MOVE ZEROS TO ABND-SQLCODE\n STRING 'UAD010(6) - Error updating TO account ' \n DELIMITED BY SIZE\n ' EIBRESP=' DELIMITED BY SIZE\n ABND-RESPCODE DELIMITED BY SIZE\n ' RESP2=' DELIMITED BY SIZE\n ABND-RESP2CODE DELIMITED BY SIZE\n INTO ABND-FREEFORM\n END-STRING\n DISPLAY 'Error updating TO account' \n ELSE\n'
+line 565:0 no viable alternative at input '<EOF>'
+Traceback (most recent call last):
+  File "/home/fangjian/Documents/Github_Projects/BRE/COBREX-CLI/extractor.py", line 42, in extract_business_rules
+    cfg_json,cyclomatic_complexity = extractor(preprocessed_file_path,file_name,file_path, 'output')
+  File "/home/fangjian/Documents/Github_Projects/BRE/COBREX-CLI/ParsingUnit/main.py", line 41, in extractor
+    cobol_analyzer.build(tree)
+  File "/home/fangjian/Documents/Github_Projects/BRE/COBREX-CLI/ParsingUnit/cobol_cfg.py", line 204, in build
+    self.visit(tree)
+  File "/home/fangjian/Documents/Github_Projects/BRE/COBREX-CLI/testEnv/lib/python3.9/site-packages/antlr4/tree/Tree.py", line 34, in visit
+    return tree.accept(self)
+  File "/home/fangjian/Documents/Github_Projects/BRE/COBREX-CLI/ParsingUnit/antlr_py/Cobol85Parser.py", line 5624, in accept
+    return visitor.visitStartRule(self)
+  File "/home/fangjian/Documents/Github_Projects/BRE/COBREX-CLI/ParsingUnit/antlr_py/Cobol85Visitor.py", line 14, in visitStartRule
+    return self.visitChildren(ctx)
+  File "/home/fangjian/Documents/Github_Projects/BRE/COBREX-CLI/testEnv/lib/python3.9/site-packages/antlr4/tree/Tree.py", line 44, in visitChildren
+    childResult = c.accept(self)
+  File "/home/fangjian/Documents/Github_Projects/BRE/COBREX-CLI/ParsingUnit/antlr_py/Cobol85Parser.py", line 5676, in accept
+    return visitor.visitCompilationUnit(self)
+  File "/home/fangjian/Documents/Github_Projects/BRE/COBREX-CLI/ParsingUnit/antlr_py/Cobol85Visitor.py", line 19, in visitCompilationUnit
+    return self.visitChildren(ctx)
+  File "/home/fangjian/Documents/Github_Projects/BRE/COBREX-CLI/testEnv/lib/python3.9/site-packages/antlr4/tree/Tree.py", line 44, in visitChildren
+    childResult = c.accept(self)
+  File "/home/fangjian/Documents/Github_Projects/BRE/COBREX-CLI/ParsingUnit/antlr_py/Cobol85Parser.py", line 5757, in accept
+    return visitor.visitProgramUnit(self)
+  File "/home/fangjian/Documents/Github_Projects/BRE/COBREX-CLI/ParsingUnit/antlr_py/Cobol85Visitor.py", line 24, in visitProgramUnit
+    return self.visitChildren(ctx)
+  File "/home/fangjian/Documents/Github_Projects/BRE/COBREX-CLI/testEnv/lib/python3.9/site-packages/antlr4/tree/Tree.py", line 44, in visitChildren
+    childResult = c.accept(self)
+  File "/home/fangjian/Documents/Github_Projects/BRE/COBREX-CLI/ParsingUnit/antlr_py/Cobol85Parser.py", line 27017, in accept
+    return visitor.visitProcedureDivision(self)
+  File "/home/fangjian/Documents/Github_Projects/BRE/COBREX-CLI/ParsingUnit/antlr_py/Cobol85Visitor.py", line 1274, in visitProcedureDivision
+    return self.visitChildren(ctx)
+  File "/home/fangjian/Documents/Github_Projects/BRE/COBREX-CLI/testEnv/lib/python3.9/site-packages/antlr4/tree/Tree.py", line 44, in visitChildren
+    childResult = c.accept(self)
+  File "/home/fangjian/Documents/Github_Projects/BRE/COBREX-CLI/ParsingUnit/antlr_py/Cobol85Parser.py", line 27849, in accept
+    return visitor.visitProcedureDivisionBody(self)
+  File "/home/fangjian/Documents/Github_Projects/BRE/COBREX-CLI/ParsingUnit/antlr_py/Cobol85Visitor.py", line 1329, in visitProcedureDivisionBody
+    return self.visitChildren(ctx)
+  File "/home/fangjian/Documents/Github_Projects/BRE/COBREX-CLI/testEnv/lib/python3.9/site-packages/antlr4/tree/Tree.py", line 44, in visitChildren
+    childResult = c.accept(self)
+  File "/home/fangjian/Documents/Github_Projects/BRE/COBREX-CLI/ParsingUnit/antlr_py/Cobol85Parser.py", line 27914, in accept
+    return visitor.visitProcedureSection(self)
+  File "/home/fangjian/Documents/Github_Projects/BRE/COBREX-CLI/ParsingUnit/cobol_cfg.py", line 3459, in visitProcedureSection
+    self.visitChildren(ctx.children[2]) # visit paragraphs
+  File "/home/fangjian/Documents/Github_Projects/BRE/COBREX-CLI/testEnv/lib/python3.9/site-packages/antlr4/tree/Tree.py", line 44, in visitChildren
+    childResult = c.accept(self)
+  File "/home/fangjian/Documents/Github_Projects/BRE/COBREX-CLI/ParsingUnit/antlr_py/Cobol85Parser.py", line 28056, in accept
+    return visitor.visitParagraph(self)
+  File "/home/fangjian/Documents/Github_Projects/BRE/COBREX-CLI/ParsingUnit/cobol_cfg.py", line 3417, in visitParagraph
+    self.visitChildren(child)
+  File "/home/fangjian/Documents/Github_Projects/BRE/COBREX-CLI/testEnv/lib/python3.9/site-packages/antlr4/tree/Tree.py", line 44, in visitChildren
+    childResult = c.accept(self)
+  File "/home/fangjian/Documents/Github_Projects/BRE/COBREX-CLI/ParsingUnit/antlr_py/Cobol85Parser.py", line 28384, in accept
+    return visitor.visitStatement(self)
+  File "/home/fangjian/Documents/Github_Projects/BRE/COBREX-CLI/ParsingUnit/antlr_py/Cobol85Visitor.py", line 1354, in visitStatement
+    return self.visitChildren(ctx)
+  File "/home/fangjian/Documents/Github_Projects/BRE/COBREX-CLI/testEnv/lib/python3.9/site-packages/antlr4/tree/Tree.py", line 44, in visitChildren
+    childResult = c.accept(self)
+  File "/home/fangjian/Documents/Github_Projects/BRE/COBREX-CLI/ParsingUnit/antlr_py/Cobol85Parser.py", line 34892, in accept
+    return visitor.visitIfStatement(self)
+  File "/home/fangjian/Documents/Github_Projects/BRE/COBREX-CLI/ParsingUnit/cobol_cfg.py", line 3215, in visitIfStatement
+    self.visitChildren(if_then_ctx)
+  File "/home/fangjian/Documents/Github_Projects/BRE/COBREX-CLI/testEnv/lib/python3.9/site-packages/antlr4/tree/Tree.py", line 44, in visitChildren
+    childResult = c.accept(self)
+  File "/home/fangjian/Documents/Github_Projects/BRE/COBREX-CLI/ParsingUnit/antlr_py/Cobol85Parser.py", line 28384, in accept
+    return visitor.visitStatement(self)
+  File "/home/fangjian/Documents/Github_Projects/BRE/COBREX-CLI/ParsingUnit/antlr_py/Cobol85Visitor.py", line 1354, in visitStatement
+    return self.visitChildren(ctx)
+  File "/home/fangjian/Documents/Github_Projects/BRE/COBREX-CLI/testEnv/lib/python3.9/site-packages/antlr4/tree/Tree.py", line 44, in visitChildren
+    childResult = c.accept(self)
+  File "/home/fangjian/Documents/Github_Projects/BRE/COBREX-CLI/ParsingUnit/antlr_py/Cobol85Parser.py", line 38842, in accept
+    return visitor.visitPerformStatement(self)
+  File "/home/fangjian/Documents/Github_Projects/BRE/COBREX-CLI/ParsingUnit/cobol_cfg.py", line 2614, in visitPerformStatement
+    procedure = self.get_procedure(procedure_from)
+  File "/home/fangjian/Documents/Github_Projects/BRE/COBREX-CLI/ParsingUnit/cobol_cfg.py", line 313, in get_procedure
+    return self.procedures[procedure_name]
+KeyError: 'GET-ME-OUT-OF-HERE'
