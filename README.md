@@ -9,21 +9,25 @@ At the project level, our approach generates explanations that convey the functi
 ## Folder Descriptions
 
 - `COBOL_basic_definition/`: Contains a synthetic COBOL example designed to help readers unfamiliar with COBOL understand the basic program structure.
-- `Manual Evaluation/`: Includes manual evaluation results for all three research questions (RQ1–RQ3), such as scores for reference coverage, hallucination detection, business relevance, functionality, and completeness.
-- `project_statistic_info/`: Provides statistics for the studied open-source COBOL projects, including lines of code (LOC), token counts, and project descriptions.
-- `Prompts/`: Contains all the prompt templates used for code, file, and project-level explanation generation in the paper.
-- `usefulness_analysis/`: Includes usefulness studies 
+- `Studied Projects Info/`: Provides statistics for the studied open-source COBOL projects, including lines of code (LOC), token counts, and project descriptions.
+- `figures/`: Contains approach visualizations.
+- `llm judge/`: Contains llm judge results for RQ1 (function level), RQ2 (file level), and RQ3 (project level).
+- `manual Evaluation/`: Includes manual evaluation results for all three research questions (RQ1–RQ3), such as scores for reference coverage, hallucination detection, business relevance, functionality, and completeness.
+- `non-LLM approach/`: In this folder, we contain the two COBOL static analysis tools' output for RQ2 dataset and few examples used in paper. BRE_results.zip contain the A-COBREX and Code4-z output figures for file-level dataset
+- `prompts template/`: Contains all the prompt templates used for code, file, and project-level explanation generation in the paper.
+- `qualitative_analysis/`: Includes usefulness studies 
     - `usefulness_analysis.xlsx` shows both good and bad examples across different levels, demonstrating the usefulness of our approach and reason.
     - `response_purpose_compare_explanation.csv`: Contains analysis that explains why we adopt a bottom-up strategy and focus on file-level purpose, showing how it leads to more consistent and accurate explanations.
     - `function_level_example_text_processing.png`: Provides function-level examples illustrating the benefits of incorporating a Text Processing LLM and the motivation for using it in generating refined summaries.
     - `usefulness_user_study_Annotator1.xlsx`,`usefulness_user_study_Annotator2.xlsx`,`usefulness_user_study_Annotator3.xlsx` contain the label results for three annotators
+- `script/` folder contains the ource code we used for extracting the artifacts and generating explanations pipeline for three levels
 
 ## Usage
 1. Run ```pip install -r requirements.txt``` to install all the requirements.
 2. Execute the notebooks in ```script``` sequentially to reproduce our approach and experiment results.
 
 ### Dataset
-```data/projects``` provides the raw data of the 14 COBOL projects.
+```data/projects``` provides the raw data of the 15 COBOL projects.
 
 ```data/function_level_reference_dataset.csv``` provides the dataset of COBOL paragraphs with corresponding comments as reference data. The comments are in the 'reference data' column.
 
